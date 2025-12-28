@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Bonface Mwongera - Web Developer & CS Student</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary-color: #7c3aed;
+      --dark-color: #1e293b;
+      --light-color: #f8fafc;
+      --gray-color: #64748b;
+      --card-bg: #ffffff;
+      --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 15px 35px rgba(37, 99, 235, 0.15);
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: var(--gradient);
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      top: -150px;
+      right: -100px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      bottom: -100px;
+      left: -50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        grid-template-columns: 350px 1fr;
+        align-items: start;
+      }
+    }
+
+    /* Profile Sidebar */
+    .profile-sidebar {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .profile-img-container {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #e0e7ff;
+      position: relative;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: linear-gradient(45deg, #1e40af, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4rem;
+    }
+
+    .profile-name {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark-color);
+    }
+
+    .profile-title {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .profile-contact {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: #f8fafc;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: #e0e7ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+    }
+
+    .contact-details {
+      text-align: left;
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.85rem;
+      color: var(--gray-color);
+    }
+
+    .contact-value {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+
+    .contact-value a {
+      color: var(--dark-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-value a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      color: var(--dark-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e0e7ff;
+    }
+
+    .section-title i {
+      color: var(--primary-color);
+    }
+
+    .intro-text {
+      font-size: 1.1rem;
+      color: var(--gray-color);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Education */
+    .education-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .education-card:hover {
+      transform: translateX(5px);
+    }
+
+    .education-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+    }
+
+    .education-institution {
+      color: var(--primary-color);
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .education-details {
+      color: var(--gray-color);
+      font-size: 0.95rem;
+    }
+
+    /* Interests/Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-category {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .skill-category h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+    }
+
+    .skill-category h4 i {
+      color: var(--primary-color);
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+
+    .skill-list li i {
+      color: var(--success-color);
+      font-size: 0.8rem;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--dark-color);
+      border: 2px solid #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+      transform: translateY(-3px);
+      border-color: var(--primary-color);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(-5px);
+    }
+
+    .copyright {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .profile-sidebar {
+        position: static;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      .main-content {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-sidebar, .main-content {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .main-content {
+      animation-delay: 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About Me</h1>
+    <p class="header-subtitle">Computer Science Student | Web Developer | Cybersecurity Enthusiast</p>
+  </header>
+
+  <div class="container">
+    <!-- Profile Sidebar -->
+    <aside class="profile-sidebar">
+      <div class="profile-img-container">
+        <div class="profile-img">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      
+      <h2 class="profile-name">Bonface Mwongera</h2>
+      <p class="profile-title">CS Student & Web Developer</p>
+      
+      <p style="color: var(--gray-color); margin-bottom: 1.5rem;">
+        Passionate about creating innovative solutions through code and securing digital spaces.
+      </p>
+      
+      <div class="profile-contact">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:bonface@example.com">bonface@example.com</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">
+              <a href="https://linkedin.com/in/bonfacemwongera" target="_blank">linkedin.com/in/bonfacemwongera</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">
+              <a href="https://github.com/bonfacemwongera" target="_blank">github.com/bonfacemwongera</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="contact-details">
+            <div class="contact-label">Education</div>
+            <div class="contact-value">Egerton University</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Introduction -->
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-hand-wave"></i> Hello There!
+        </h2>
+        <p class="intro-text">
+          I'm a passionate <span class="highlight">Computer Science student</span> with a deep interest in 
+          <span class="highlight">Web Development</span> and <span class="highlight">Cybersecurity</span>. 
+          I love transforming complex problems into elegant, functional solutions through code.
+        </p>
+        <p class="intro-text">
+          My expertise lies in building responsive web applications using modern technologies like 
+          <span class="highlight">Python, HTML5, CSS3, JavaScript, and PHP</span>. I'm constantly exploring 
+          new frameworks and tools to enhance my development workflow and create better user experiences.
+        </p>
+        <p class="intro-text">
+          Beyond coding, I'm fascinated by the security aspects of web applications and enjoy learning about 
+          ethical hacking principles and secure coding practices to build robust, safe digital solutions.
+        </p>
+      </section>
+
+      <!-- Education -->
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-graduation-cap"></i> Education
+        </h2>
+        <div class="education-card">
+          <h3 class="education-title">Bachelor of Science in Computer Science</h3>
+          <p class="education-institution">Egerton University</p>
+          <p class="education-details">
+            <i class="far fa-calendar-alt"></i> Expected Graduation: 2026
+          </p>
+          <p style="margin-top: 10px; color: var(--gray-color); font-size: 0.95rem;">
+            <strong>Relevant Coursework:</strong> Data Structures & Algorithms, Database Systems, 
+            Computer Networks, Web Technologies, Software Engineering, Cybersecurity Fundamentals
+          </p>
+        </div>
+      </section>
+
+      <!-- Interests & Skills -->
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-laptop-code"></i> Technical Interests & Skills
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4><i class="fas fa-code"></i> Web Development</h4>
+            <ul class="skill-list">
+              <li><i class="fas fa-check-circle"></i> Frontend (HTML, CSS, JavaScript)</li>
+              <li><i class="fas fa-check-circle"></i> Backend (Python, PHP)</li>
+              <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+              <li><i class="fas fa-check-circle"></i> REST APIs</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4><i class="fas fa-shield-alt"></i> Cybersecurity</h4>
+            <ul class="skill-list">
+              <li><i class="fas fa-check-circle"></i> Ethical Hacking Concepts</li>
+              <li><i class="fas fa-check-circle"></i> Network Security</li>
+              <li><i class="fas fa-check-circle"></i> Secure Coding Practices</li>
+              <li><i class="fas fa-check-circle"></i> Vulnerability Assessment</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4><i class="fas fa-database"></i> Databases & Tools</h4>
+            <ul class="skill-list">
+              <li><i class="fas fa-check-circle"></i> MySQL Database Design</li>
+              <li><i class="fas fa-check-circle"></i> Git & GitHub</li>
+              <li><i class="fas fa-check-circle"></i> VS Code & Development Tools</li>
+              <li><i class="fas fa-check-circle"></i> Linux Command Line</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4><i class="fas fa-rocket"></i> Professional Interests</h4>
+            <ul class="skill-list">
+              <li><i class="fas fa-check-circle"></i> Full-Stack Development</li>
+              <li><i class="fas fa-check-circle"></i> Open Source Projects</li>
+              <li><i class="fas fa-check-circle"></i> Web Application Security</li>
+              <li><i class="fas fa-check-circle"></i> Cloud Computing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-handshake"></i> Let's Connect
+        </h2>
+        <p class="intro-text">
+          I'm currently seeking attachment/internship opportunities in software development, web development, 
+          or cybersecurity roles. I'm excited to contribute to innovative projects and grow as a developer.
+        </p>
+        <div class="cta-buttons">
+          <a href="projects.html" class="btn btn-primary">
+            <i class="fas fa-code"></i> View My Projects
+          </a>
+          <a href="Bonface_Mwongera_CV.pdf" class="btn btn-secondary" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+          <a href="mailto:bonface@example.com" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> Contact Me
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <p class="copyright">© 2023 Bonface Mwongera. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add interactivity
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update copyright year
+      const yearSpan = document.querySelector('.copyright');
+      if (yearSpan) {
+        const currentYear = new Date().getFullYear();
+        yearSpan.textContent = yearSpan.textContent.replace('2023', currentYear);
+      }
+      
+      // Add animation to skill categories on hover
+      const skillCategories = document.querySelectorAll('.skill-category');
+      skillCategories.forEach(category => {
+        category.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+        });
+        
+        category.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId !== '#') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

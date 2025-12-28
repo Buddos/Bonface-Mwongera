@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Bonface Mwongera - Web Developer & CS Student</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary-color: #7c3aed;
+      --dark-color: #1e293b;
+      --light-color: #f8fafc;
+      --gray-color: #64748b;
+      --success-color: #10b981;
+      --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --card-hover-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: var(--dark-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      top: -150px;
+      right: -100px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      bottom: -100px;
+      left: -50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .project-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .project-image.website {
+      background: linear-gradient(45deg, #1e40af, #3b82f6);
+    }
+
+    .project-image.ecommerce {
+      background: linear-gradient(45deg, #7c3aed, #8b5cf6);
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary-color);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .project-content {
+      padding: 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark-color);
+    }
+
+    .project-content p {
+      color: var(--gray-color);
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: #e0e7ff;
+      color: var(--primary-color);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--dark-color);
+      border: 1px solid #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+    }
+
+    .btn i {
+      font-size: 1rem;
+    }
+
+    footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(-5px);
+    }
+
+    .copyright {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .project-links {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animation for cards */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .project-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Projects</h1>
+    <p class="subtitle">A showcase of my web development work and technical projects as a Computer Science student</p>
+  </header>
+
+  <div class="container">
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-image website">
+          <div class="project-tag">Website</div>
+        </div>
+        <div class="project-content">
+          <h3>BonnieInfratech Website</h3>
+          <p>A fully responsive corporate website designed and developed for an IT infrastructure company. Features modern UI/UX design, smooth animations, and optimized performance across all devices.</p>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive Design</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="https://github.com/bonfacemwongera/bonnieinfratech" target="_blank" class="btn btn-primary">
+              <i class="fab fa-github"></i> View Code
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-image ecommerce">
+          <div class="project-tag">Web App</div>
+        </div>
+        <div class="project-content">
+          <h3>E-commerce Platform</h3>
+          <p>A complete online shopping solution with user authentication, product catalog, shopping cart, and checkout system. Built with secure backend processing and database integration.</p>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="http://dashing-market.byethost17.com" target="_blank" class="btn btn-primary">
+              <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <i class="fab fa-github"></i> Source Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 - Placeholder for future project -->
+      <div class="project-card">
+        <div class="project-image" style="background: linear-gradient(45deg, #0ea5e9, #06b6d4);">
+          <div class="project-tag">Coming Soon</div>
+        </div>
+        <div class="project-content">
+          <h3>Cybersecurity Dashboard</h3>
+          <p>A security monitoring tool currently in development. This project will visualize network security metrics and threat detection data using modern web technologies.</p>
+          
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+          
+          <div class="project-links">
+            <button class="btn btn-secondary" style="cursor: not-allowed; opacity: 0.7;">
+              <i class="fas fa-clock"></i> In Progress
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <p class="copyright">© 2023 Bonface Mwongera. All rights reserved. | Computer Science Student & Web Developer</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add some interactivity
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add hover effect to project cards
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      projectCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // Update copyright year
+      const yearSpan = document.querySelector('.copyright');
+      if (yearSpan) {
+        yearSpan.textContent = yearSpan.textContent.replace('2023', new Date().getFullYear());
+      }
+    });
+  </script>
+</body>
+</html>
