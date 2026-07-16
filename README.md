@@ -27,8 +27,8 @@ I’m constantly learning and exploring new technologies in the web and cybersec
 ## 🛠️ Tech Stack
 | Category | Tools |
 |-----------|--------|
-| **Languages** | HTML, CSS, JavaScript, Python |
+| **Languages** | HTML, CSS, Typescript, Python |
 | **Frameworks / Tools** | Flask (learning), Node.js (learning), Git, VS Code |
-| **Design** | Figma, Canva |(learning)
-| **Hosting** | GitHub Pages |
+| **Design** | Figma, Canva 
+| **Hosting** | GitHub Pages |vercel /Netlify
 
